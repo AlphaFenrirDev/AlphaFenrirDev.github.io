@@ -1,0 +1,99 @@
+/* Para reiniciar márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo inicial en negro */
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #161616; /* Fondo negro al iniciar */
+    overflow: hidden; /* Para evitar scroll si los GIFs se salen */
+}
+
+/* Contenedor con bordes semi-transparentes */
+.container {
+    height: 100vh;
+    border: 20px solid rgba(255, 255, 255, 0.5); /* Bordes semi-transparentes */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Fondo arcoíris animado (se añade al hacer clic) */
+.rainbow-background {
+    animation: rainbowBackground 5s linear infinite; /* 5s para recorrer todo el arcoíris */
+}
+
+/* Animación para cambiar colores de fondo */
+@keyframes rainbowBackground {
+    0% { background-color: #ff0000; }
+    20% { background-color: #ff7f00; }
+    40% { background-color: #ffff00; }
+    60% { background-color: #00ff00; }
+    80% { background-color: #0000ff; }
+    100% { background-color: #8b00ff; }
+}
+
+/* Botón centrado */
+#trustMeButton {
+    padding: 15px 30px;
+    font-size: 6vw; /* Tamaño del botón adaptable a pantallas pequeñas */
+    cursor: pointer;
+    background-color: #8b00ff;
+    color: #161616;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+#trustMeButton:hover {
+    background-color: #6100b1;
+}
+
+/* GIF principal centrado */
+#mainGif {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+}
+
+/* GIF flotante */
+.floating-gif {
+    position: absolute;
+    width: 100px;
+    animation: floatAround 10s linear infinite; /* 10s para que se muevan lentamente */
+}
+
+/* Ajustar la animación para que los GIFs floten completamente por la pantalla */
+@keyframes floatAround {
+    0% {
+        transform: translate(-10vw, -10vh); /* Comienza fuera del viewport */
+    }
+    100% {
+        transform: translate(110vw, 110vh); /* Termina fuera del viewport */
+    }
+}
+
+
+/* Media queries para pantallas móviles */
+@media (max-width: 768px) {
+    .container {
+        border: 10px solid rgba(255, 255, 255, 0.5); /* Bordes más finos en móviles */
+    }
+    #trustMeButton {
+        font-size: 8vw; /* Botón más grande en móviles */
+    }
+    #mainGif {
+        max-width: 50vw; /* GIF principal más pequeño en móviles */
+    }
+    .floating-gif {
+        width: 15vw; /* GIFs flotantes más pequeños en móviles */
+    }
+}
